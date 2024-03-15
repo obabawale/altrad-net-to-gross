@@ -19,7 +19,7 @@ def calculate_paye_tax(gross_income):
         """Calculate taxable income"""
         pass
 
-    return calculate_paye_tax(gross_income)
+    return calculate_taxable_income(gross_income)
 
 
 def calculcate_gross_from_net(gross_income: float, **kwargs):
@@ -36,7 +36,10 @@ def calculcate_gross_from_net(gross_income: float, **kwargs):
 
 
 def main():
-    pass
+    housing = int(input("Enter housing allowance "))
+    transport = int(input("Enter transport allowance "))
+    print(f"Housing allowance is {housing}")
+    print(f"Transport allowance is {transport}")
 
 
 if __name__ == "__main__":
