@@ -14,6 +14,6 @@ However, for Freelancers (FLC), we know the Net pay but not other factors of the
 
 ## Steps
 
-- [x] 1. come up with a quadratic function that can be minized to get the Gross Income value
-- [] 2. Write code for the quadractic function
-- [] 3. Add minimization package to run on the code
+1. - [x] Come up with a quadratic function that can be minized to get the Gross Income value
+2. - [ ] Write code for the quadractic function
+3. - [ ] Add minimization package to run on the code
