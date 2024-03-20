@@ -87,9 +87,8 @@ def calculate_gross_from_net(net_income, housing_allowance, transport_allowance,
 if __name__ == "__main__":
 
     # Example inputs
-
-    housing_allowance = 30000
-    transport_allowance = 5000
+    housing_allowance = 30000 # they need to provide us with housing allowance
+    transport_allowance = 5000 # they need to provide us with transport allowance
     other_allowances = {
         "Education": 10000,
         "Incentive": 8000,
@@ -100,13 +99,20 @@ if __name__ == "__main__":
 
     net_income = 1600000
 
+    # Gross = basic + allowances
+    # allowances = transportation + housing + education + incentive, non-strike, performance etc
+    # other_allowances = Gross - basic - housing - transport
+    # other_allowances 
+
     # Calculate gross from net
     gross = calculate_gross_from_net(net_income, housing_allowance, transport_allowance, other_allowances)
     pension = calculate_pension(basic=.5*gross, housing_allowance=housing_allowance, transport_allowance=transport_allowance)
     paye = calculate_paye_tax(gross, pension)
     print(f'The initial net value is {net_income:,.2f}')
+    print(f'The basic is {0.5*gross:,.2f}')
     print(f'The gross value for net = N{net_income:,.2f} is = N{gross:,.2f}')
     print(f"Pension value is N{round(pension, 2):,.2f}")
     print(f"PAYE Tax is {round(paye, 2):,.2f}")
     print(f"New Net value is {round(gross - paye - pension):,.2f}")
+    print(f"PAYE (%) {round((paye/gross)*100)}%")
 
