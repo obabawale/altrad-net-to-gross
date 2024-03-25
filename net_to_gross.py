@@ -36,13 +36,21 @@ def calculate_paye_tax(gross_income, pension):
     # Taxable income is gross income minus CRF, GRF, and pension contributions
     taxable_income = gross_income - CRF - GRF - pension
 
-    # Calculate PAYE tax based on taxable income brackets
-    tax = 0.07 * min(300000, taxable_income) + \
-        0.11 * min(300000, max(taxable_income - 300000, 0)) + \
-        0.15 * min(500000, max(taxable_income - 600000, 0)) + \
-        0.19 * min(500000, max(taxable_income - 1100000, 0)) + \
-        0.21 * min(1600000, max(taxable_income - 1600000, 0)) + \
-        0.24 * max(0, taxable_income - 3200000)
+    # Calculate PAYE tax based on taxable income brackets (annual)
+    # tax = 0.07 * min(300000, taxable_income) + \
+    #     0.11 * min(300000, max(taxable_income - 300000, 0)) + \
+    #     0.15 * min(500000, max(taxable_income - 600000, 0)) + \
+    #     0.19 * min(500000, max(taxable_income - 1100000, 0)) + \
+    #     0.21 * min(1600000, max(taxable_income - 1600000, 0)) + \
+    #     0.24 * max(0, taxable_income - 3200000)
+
+    # monthly pay proration
+    tax = 0.07 * min(300000/12, taxable_income) + \
+        0.11 * min(300000/12, max(taxable_income - 300000/12, 0)) + \
+        0.15 * min(500000/12, max(taxable_income - ((300000/12) * 2), 0)) + \
+        0.19 * min(500000/12, max(taxable_income - ((300000/12) + (300000/12) + (500000/12)), 0)) + \
+        0.21 * min(1600000/12, max(taxable_income - ((300000/12) + (300000/12) + (500000/12) + (500000/12)), 0)) + \
+        0.24 * max(0, taxable_income - (3200000/12))
     return tax
 
 
